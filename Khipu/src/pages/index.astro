@@ -1,0 +1,325 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PaymentFormReact from '../components/React/PaymentForm.jsx';
+import PaymentFormSvelte from '../components/Svelte/PaymentForm.svelte';
+import PaymentStatus from '../components/React/PaymentStatus.jsx';
+---
+
+<BaseLayout title="Khipu + Astro Demo">
+  <div class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>🚀 Integración Khipu + Astro</h1>
+        <p class="hero-subtitle">
+          Demo completo de integración de pagos usando Khipu con componentes React y Svelte
+        </p>
+        <div class="hero-features">
+          <div class="feature">
+            <span class="feature-icon">⚡</span>
+            <span>Rápido y Seguro</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">🔒</span>
+            <span>Sandbox Environment</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">🌟</span>
+            <span>Multi-Framework</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="setup-warning">
+      <div class="warning-icon">⚠️</div>
+      <div class="warning-content">
+        <h3>Configuración Requerida</h3>
+        <p>
+          Para usar este demo, necesitas configurar tus credenciales de Khipu en el archivo <code>.env</code>:
+        </p>
+        <div class="code-block">
+          <code>
+            KHIPU_RECEIVER_ID=tu_receiver_id_de_sandbox<br/>
+            KHIPU_SECRET=tu_secret_de_sandbox
+          </code>
+        </div>
+        <p>
+          Obtén tus credenciales en <a href="https://khipu.com" target="_blank">khipu.com</a> 
+          (usa el ambiente de sandbox para pruebas)
+        </p>
+      </div>
+    </div>
+
+    <div class="frameworks-grid">
+      <section id="react-section" class="framework-section">
+        <div class="section-header">
+          <h2>💙 Componente React</h2>
+          <p>Implementación usando React con hooks y estado local</p>
+        </div>
+        <PaymentFormReact client:load />
+      </section>
+
+      <section id="svelte-section" class="framework-section">
+        <div class="section-header">
+          <h2>🧡 Componente Svelte</h2>
+          <p>Implementación usando Svelte con reactividad nativa</p>
+        </div>
+        <PaymentFormSvelte client:load />
+      </section>
+
+      <section id="status-section" class="framework-section">
+        <div class="section-header">
+          <h2>📊 Consultar Estado de Pago</h2>
+          <p>Verifica el estado actual de cualquier pago usando su ID</p>
+        </div>
+        <PaymentStatus client:load />
+      </section>
+    </div>
+
+    <div class="info-section">
+      <h2>📚 Cómo Funciona</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-icon">1️⃣</div>
+          <h3>Frontend</h3>
+          <p>Los formularios React y Svelte capturan los datos del pago y validan la entrada del usuario</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">2️⃣</div>
+          <h3>API Route</h3>
+          <p>El endpoint /api/create-payment procesa la solicitud y se comunica con la API de Khipu</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">3️⃣</div>
+          <h3>Khipu</h3>
+          <p>Khipu genera una URL de pago segura donde el usuario puede completar la transacción</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">4️⃣</div>
+          <div>
+            <h3>Checkout</h3>
+            <p>El usuario es redirigido a Khipu para completar el pago de forma segura</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    margin: 2rem 0;
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff, #f3f4f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .hero-features {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    backdrop-filter: blur(10px);
+    color: white;
+    font-weight: 500;
+  }
+
+  .feature-icon {
+    font-size: 1.25rem;
+  }
+
+  .setup-warning {
+    background: #fef3cd;
+    border: 2px solid #fbbf24;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 3rem 0;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .warning-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .warning-content h3 {
+    color: #92400e;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .warning-content p {
+    color: #78350f;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .warning-content a {
+    color: #1d4ed8;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .warning-content a:hover {
+    text-decoration: underline;
+  }
+
+  .code-block {
+    background: #1f2937;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: 'Courier New', monospace;
+  }
+
+  .code-block code {
+    color: #10b981;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .frameworks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 3rem;
+    margin: 4rem 0;
+  }
+
+  .framework-section {
+    scroll-margin-top: 100px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: white;
+  }
+
+  .section-header p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+  }
+
+  .info-section {
+    margin: 5rem 0;
+    text-align: center;
+  }
+
+  .info-section h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+    color: white;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .info-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .info-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .info-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-card h3 {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .info-card p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .frameworks-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .hero {
+      padding: 2rem 0;
+      margin: 1rem;
+    }
+
+    .hero-features {
+      gap: 1rem;
+    }
+
+    .feature {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+    }
+
+    .setup-warning {
+      margin: 2rem 1rem;
+      padding: 1.5rem;
+    }
+
+    .info-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>
+</BaseLayout>

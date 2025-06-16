@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Pago Cancelado - Khipu Demo">
+  <div class="container">
+    <div class="cancelled-page">
+      <div class="cancelled-icon">❌</div>
+      <h1>Pago Cancelado</h1>
+      <p class="cancelled-message">
+        El pago ha sido cancelado. No se ha realizado ningún cargo a tu cuenta.
+      </p>
+      
+      <div class="cancelled-actions">
+        <a href="/" class="btn-primary">Intentar nuevamente</a>
+        <a href="mailto:soporte@ejemplo.com" class="btn-secondary">
+          Contactar soporte
+        </a>
+      </div>
+
+      <div class="info-box">
+        <h3>💡 ¿Necesitas ayuda?</h3>
+        <p>
+          Si tienes problemas con el proceso de pago, puedes intentar nuevamente 
+          o contactar a nuestro equipo de soporte para recibir asistencia.
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .cancelled-page {
+    max-width: 600px;
+    margin: 4rem auto;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .cancelled-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cancelled-page h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+  }
+
+  .cancelled-message {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+
+  .cancelled-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+  }
+
+  .info-box {
+    background: rgba(249, 115, 22, 0.1);
+    border: 1px solid rgba(249, 115, 22, 0.2);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: left;
+  }
+
+  .info-box h3 {
+    color: #fed7aa;
+    margin-bottom: 0.75rem;
+    font-size: 1.125rem;
+  }
+
+  .info-box p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .cancelled-page {
+      margin: 2rem 1rem;
+      padding: 2rem;
+    }
+
+    .cancelled-actions {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+    }
+  }
+</style>
+</BaseLayout>

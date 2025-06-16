@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Pago Exitoso - Khipu Demo">
+  <div class="container">
+    <div class="success-page">
+      <div class="success-icon">✅</div>
+      <h1>¡Pago Exitoso!</h1>
+      <p class="success-message">
+        Tu pago ha sido procesado correctamente. Recibirás una confirmación por email.
+      </p>
+      
+      <div class="success-actions">
+        <a href="/" class="btn-primary">Volver al inicio</a>
+        <a href="https://khipu.com" target="_blank" class="btn-secondary">
+          Ir a Khipu
+        </a>
+      </div>
+
+      <div class="info-box">
+        <h3>📋 Información</h3>
+        <p>
+          Esta es una página de ejemplo para mostrar el flujo completo de pago. 
+          En una aplicación real, aquí mostrarías los detalles de la transacción 
+          y cualquier información relevante para el usuario.
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .success-page {
+    max-width: 600px;
+    margin: 4rem auto;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .success-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .success-page h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+  }
+
+  .success-message {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+
+  .success-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #059669, #047857);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+  }
+
+  .info-box {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: left;
+  }
+
+  .info-box h3 {
+    color: #93c5fd;
+    margin-bottom: 0.75rem;
+    font-size: 1.125rem;
+  }
+
+  .info-box p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .success-page {
+      margin: 2rem 1rem;
+      padding: 2rem;
+    }
+
+    .success-actions {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+    }
+  }
+</style>
+</BaseLayout>
